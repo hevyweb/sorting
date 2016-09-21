@@ -2,15 +2,12 @@ $('body').ready(function(){
     inprogress = false;
     $('button').click(function(e){
         $(this).unbind('click');
-        compareElements();
-        bubbling = setInterval(function(){
-            if (!inprogress){
-                clearInterval(bubbling);
-                alert('Done!');
-                return;
+        var i = 0;
+        var n = $('input').length;
+        var interaval = setInterval(function(){
+            if (i==n || !compareElements()){
+                clearInterval(interval);
             }
-            inprogress = false;
-            compareElements();
         }, $('input').length*1000);
     });
 });
